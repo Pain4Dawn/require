@@ -11,9 +11,9 @@ requireJS2
       waitSeconds: 15
     });
 ###baseUrl
->所有模块的查找根路径
+所有模块的查找根路径
 ###paths
->path映射那些不直接放置于baseUrl下的模块名
+path映射那些不直接放置于baseUrl下的模块名
 ###shim
 为那些没有使用define()来声明依赖关系
         requirejs.config({
