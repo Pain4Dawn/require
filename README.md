@@ -30,7 +30,18 @@ path映射那些不直接放置于baseUrl下的模块名
             'backbone.layoutmanager': ['backbone']
         }
     });
-###"shim"配置的重要注意事项:
+#map
+对于给定的模块前缀，使用一个不同的模块ID来加载该模块。
+    requirejs.config({
+        map: {
+            'some/newmodule': {
+                'foo': 'foo1.2'
+            },
+            'some/oldmodule': {
+                'foo': 'foo1.0'
+            }
+        }
+    });
 
 
 
