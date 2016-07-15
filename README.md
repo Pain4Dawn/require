@@ -15,14 +15,14 @@ requireJS2
 ###paths
 >path映射那些不直接放置于baseUrl下的模块名
 ###shim
->为那些没有使用define()来声明依赖关系
+为那些没有使用define()来声明依赖关系
     requirejs.config({
         'backbone': {
              deps: ['underscore', 'jquery'],
              exports: 'Backbone'
         }
     })
->简写
+简写
     requirejs.config({
         shim: {
             'jquery.colorize': ['jquery'],
@@ -30,7 +30,7 @@ requireJS2
             'backbone.layoutmanager': ['backbone']
         }
     });
->"shim"配置的重要注意事项:
+"shim"配置的重要注意事项:
 
 
 
