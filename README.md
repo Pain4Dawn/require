@@ -31,7 +31,7 @@ path映射那些不直接放置于baseUrl下的模块名
         }
     });
 #map
-对于给定的模块前缀，使用一个不同的模块ID来加载该模块。
+###对于给定的模块前缀，使用一个不同的模块ID来加载该模块。
         requirejs.config({
             map: {
                 'some/newmodule': {
