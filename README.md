@@ -11,5 +11,6 @@ requireJS2
       waitSeconds: 15
     });
 ###baseUrl
+>所有模块的查找根路径
 
 
