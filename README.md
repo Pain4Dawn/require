@@ -2,7 +2,7 @@ requireJS2
 =========================================================================================================================
 配置
 -------------------------------------------
-###用法
+#用法
     require.config({
       baseUrl: "/another/path",
       paths: {
@@ -10,11 +10,11 @@ requireJS2
       },
       waitSeconds: 15
     });
-###baseUrl
+#baseUrl
 所有模块的查找根路径
-###paths
+#paths
 path映射那些不直接放置于baseUrl下的模块名
-###shim
+#shim
 ###为那些没有使用define()来声明依赖关系
     requirejs.config({
         'backbone': {
@@ -30,7 +30,7 @@ path映射那些不直接放置于baseUrl下的模块名
             'backbone.layoutmanager': ['backbone']
         }
     });
-#"shim"配置的重要注意事项:
+###"shim"配置的重要注意事项:
 
 
 
