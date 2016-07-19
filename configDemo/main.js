@@ -12,14 +12,74 @@ require.config({
 		3.在require.toUrl找到对应的路径
 	*/
 	paths:{
-		lib:"../lib",
-		pathTest:"path/path"
+		pathTest:"path/path",
+		"jquery":"../lib/jquery-2.2.0.min",
+		"exportsTest":"shim/exports",
+		"config1":"config/config1"
 
-	}
+	},
+	/**
+	shim:
+		为那些没有使用define()来声明依赖关系、设置模块的"浏览器全局变量注入"型脚本做依赖和导出配置。
+		shim 只是配置 必须引用
+		exports:当不是define定义的 使用
+
+	*/
+
+	shim:{ 
+		"jquery":{ 
+			deps:['shim/shim','map/module'], 
+		},
+		"exportsTest":{
+			exports:"hello"
+		}
+	},
+	/**
+		map:
+			对于给定的模块前缀，使用一个不同的模块ID来加载该模块。
+	*/
+	map:{
+		"*":{
+			"foo":"map/foo/foo1.1"
+		},
+		"map/oldmodule":{
+			"foo":"map/foo/foo1.2"
+		}
+	},
+	/**
+		config
+			模块加载的对应参数
+	*/
+	config:{
+		"config1":{
+			"name":"jude"
+		},
+		"config/config2":{
+			"name":"hello"
+		}
+	},
+	/**
+		deps:
+			指定要加载的一个依赖数组。当将require设置为一个config object在加载require.js之前使用时很有用。一旦require.js被定义，这些依赖就已加载。
+	*/
+	deps:["jquery"],
+	/**
+		waitSeconds:
+			在放弃加载一个脚本之前等待的秒数。设为0禁用等待超时。默认为7秒。
+	*/
+	waitSeconds:0
+
 });
-require(["baseUrls/baseUrl","lib/jquery-2.2.0.min","pathTest"],function(baseUrl,$,path){
+require(["baseUrls/baseUrl","pathTest","exportsTest"],function(baseUrl,path,exportsTest){
 	baseUrl.print();
 	path.print();
-	// console.info(require.toUrl(path));
-	// console.info(require.toUrl($));
+
+	exportsTest();
+	require(["map/oldmodule"],function(){
+		console.info("oldmodule end");
+	});
+
+	require(["config1","config/config2"],function(config1,config2){
+		console.info("config end");
+	});
 });
