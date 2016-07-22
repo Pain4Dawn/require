@@ -16,7 +16,6 @@ require.config({
 		"jquery":"../lib/jquery-2.2.0.min",
 		"exportsTest":"shim/exports",
 		"config1":"config/config1"
-
 	},
 	/**
 	shim:
@@ -24,6 +23,18 @@ require.config({
 		shim 只是配置 必须引用
 		exports:当不是define定义的 使用
 
+		exportsTest:{
+			exports:"hello"
+		}
+		多函数
+		exportsTest:{
+			init: function() {
+		        return {
+		          hello: hello,
+		          hello2: hello2
+		        }
+		    }
+		}
 	*/
 
 	shim:{ 
@@ -37,6 +48,7 @@ require.config({
 	/**
 		map:
 			对于给定的模块前缀，使用一个不同的模块ID来加载该模块。
+			只能拦截具体文件不能拦截文件夹（如map）
 	*/
 	map:{
 		"*":{
@@ -70,6 +82,7 @@ require.config({
 	waitSeconds:0
 
 });
+
 require(["baseUrls/baseUrl","pathTest","exportsTest"],function(baseUrl,path,exportsTest){
 	baseUrl.print();
 	path.print();
@@ -77,6 +90,9 @@ require(["baseUrls/baseUrl","pathTest","exportsTest"],function(baseUrl,path,expo
 	exportsTest();
 	require(["map/oldmodule"],function(){
 		console.info("oldmodule end");
+	});
+	require(["map/module"],function(){
+		console.info("module end");
 	});
 
 	require(["config1","config/config2"],function(config1,config2){
